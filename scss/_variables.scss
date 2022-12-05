@@ -2,3 +2,30 @@
 //    ファイル名：_variables.scss
 //    機能：変数を記述する
 // --------------------------------------------------
+// 青（文字色もこの色）
+$color-blue: #1b224c;
+
+// 白
+$color-white: #fff;
+
+// オフホワイト
+$color-offwhite: #f8f8f8;
+
+// グレー
+$color-gray: #d5d5d5;
+
+// オレンジ
+$color-orange: #f5a623;
+
+// 最大幅（左右にパディング15pxずつ）
+$max-width: 930px;
+
+// ブレークポイント（PC基準）
+// スマホ幅：～768px
+// タブレット幅：769px～1280px
+// PC幅：1281px～
+$breakpoints: (
+  sm: 599px,
+  md: 768px,
+  lg: 1280px,
+) !default;

@@ -1,16 +1,201 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
 @use "mixin" as m;
+@use "variables" as v;
 
 // ------------------------------------------------
 //  ファイル名：_main.scss
 //  機能：webページ全体のスタイルを記述する
 // ------------------------------------------------
 
-/*
- * Theme Name: Engress
- * Author: nanoha
- * Description: TOEFL対策スクール「Engress」のサイトテーマ
- * Version: 0.1
- */
+// ----------------------
+//  page.php特有のスタイル（固定ページ）
+// ----------------------
+.pg_page section {
+  // 段落
+  p {
+    color: v.$color-blue;
+    @include m.line-height-adjustment(1.625);
+  }
+
+  // h2文字
+  h2 {
+    // 文字を中央揃え
+    display: flex;
+    justify-content: center;
+
+    // 文字
+    color: v.$color-blue;
+    font-size: 2rem;
+    font-weight: bold;
+
+    // 余白
+    margin-top: 98px;
+    margin-bottom: 50px;
+  }
+
+  // 先頭の見出しは上マージンなし
+  .ly_cont_inner > h2:first-child {
+    margin-top: 0;
+  }
+}
+
+// ----------------------
+//  single-post.php特有のスタイル（ブログ投稿ページ）
+// ----------------------
+.pg_singlePost article,
+.pg_singleNews article {
+  // 段落
+  p {
+    color: v.$color-blue;
+    @include m.line-height-adjustment(1.5);
+
+    // 余白
+    margin-bottom: 45px;
+  }
+
+  // h2見出し
+  h2 {
+    // 文字
+    color: v.$color-blue;
+    font-size: 1.625rem;
+    font-weight: bold;
+
+    // 余白
+    margin-bottom: 24px;
+  }
+
+  // h3見出し
+  h3 {
+    // 装飾の基準位置
+    position: relative;
+
+    // 文字
+    color: v.$color-blue;
+    font-size: 1.375rem;
+    font-weight: bold;
+
+    // 装飾分の余白
+    padding-left: 14px;
+
+    // 余白
+    margin-bottom: 26px;
+
+    // 装飾
+    &::before {
+      // 位置
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+      // スタイル
+      display: block;
+      content: "";
+      width: 4px;
+      height: 28px;
+      background-color: v.$color-blue;
+    }
+  }
+
+  // リスト
+  ul {
+    // 余白
+    margin-bottom: 57px;
+  }
+
+  li {
+    // 装飾の基準位置
+    position: relative;
+
+    // リストスタイルを消去
+    list-style: none;
+
+    // 文字
+    @include m.line-height-adjustment(1.5rem);
+
+    // 装飾分の余白
+    padding-left: 32px;
+
+    // 装飾
+    &::before {
+      // 位置
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+      // スタイル
+      display: block;
+      content: "";
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background-color: v.$color-orange;
+    }
+  }
+
+  // リンク
+  a {
+    // 文字
+    color: v.$color-orange;
+    font-size: 1.125rem;
+    @include m.line-height-adjustment(1.5);
+
+    // 余白
+    margin-bottom: 40px;
+  }
+
+  // 引用
+  blockquote p {
+    // アイコンの基準位置
+    position: relative;
+
+    // 文字
+    color: v.$color-blue;
+
+    // サイズ
+    width: 100%;
+
+    // 背景
+    background-color: v.$color-offwhite;
+
+    // 余白
+    padding: 27px 26px 32px 74px;
+    margin-bottom: 30px;
+
+    // アイコン
+    &::before {
+      // 位置
+      position: absolute;
+      top: 16px;
+      left: 17px;
+
+      // スタイル
+      display: block;
+      content: url("img/quote.svg");
+    }
+  }
+
+  // 画像
+  .wp-block-image {
+    position: relative;
+    overflow: hidden;
+
+    // 余白
+    margin-bottom: 30px;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      // 画像を中央に表示する
+      // 幅と高さはjqueryで調整
+      max-width: none;
+    }
+  }
+}
 
 // ----------------------
 //  レイアウト
@@ -21,30 +206,2225 @@
 }
 
 .ly_header_inner {
-  max-width: 1000px;
+  max-width: 1280px;
+  padding: 15px 10px;
+  margin: 0 auto;
 }
 
 // コンテンツ
+.ly_cont {
+  width: 100vw;
+}
+
+.ly_cont_inner {
+  // 最大幅900px+左右の余白15px
+  max-width: v.$max-width;
+  padding: 58px 15px 60px;
+  margin: 0 auto;
+}
+
+// お問い合わせページ
+.pg_id_20 .ly_cont_inner {
+  // 最大幅700px+左右の余白
+  padding: 58px 115px 40px;
+}
+
+// お問い合わせ完了ページ
+.pg_contactFinish .ly_cont_inner {
+  // 最大幅700px+左右の余白
+  // 上下の余白も個別に調整
+  padding: 83px 115px 63px;
+}
+
+// セクション
+.ly_section {
+  padding: 58px 0 60px;
+
+  &.ly_section__blue {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    background-color: v.$color-blue;
+  }
+}
+
+// 複数カラムレイアウト
+.ly_contUnit {
+  // 横並びレイアウト
+  display: flex;
+  flex-wrap: wrap;
+
+  // 複数行に渡った場合、最終行は下マージンなし（★）
+  margin-bottom: -30px;
+}
+
+.ly_contUnit__col2 {
+  .ly_contUnit_section {
+    display: inline-block;
+    width: 47.777778%;
+    margin-right: 4.444444%;
+
+    // 最終行はマージンを相殺（★）
+    margin-bottom: 30px;
+  }
+
+  // 一番右の要素は右マージンなし
+  .ly_contUnit_section:nth-of-type(2n) {
+    margin-right: 0;
+  }
+
+  // メインエリア
+  .ly_contUnit_main {
+    max-width: 65.555556%;
+    margin-right: 4.444444%;
+  }
+
+  // サイドエリア
+  .ly_contUnit_side {
+    width: 30%;
+  }
+}
 
 // フッター
 .ly_footer {
   width: 100vw;
-  padding: 30px 0;
+
+  // ベースの背景色はオフホワイト
+  background-color: v.$color-offwhite;
+
+  // 背景色を青にする
+  &.ly_footer__bgBlue {
+    background-color: v.$color-blue;
+  }
+}
+
+.ly_footer_inner {
+  max-width: 900px;
+  padding: 0 10px;
+  margin: 0 auto;
 }
 
 // ----------------------
 //  ヘッダー
 // ----------------------
+.bl_headerUtils {
+  // 横並びレイアウト
+  display: flex;
+  align-items: center;
+
+  // テキストではないので、フォントサイズを小さくしておく
+  // そのままだと、高さが大きくなってしまうので調整
+  & > .el_siteTtl {
+    font-size: 1px;
+
+    // ナビゲーションとの余白
+    margin-right: 18px;
+  }
+}
+
+// ----------------------
+//  グローバルナビゲーション
+// ----------------------
+.bl_headerNav {
+  height: 100%;
+
+  @include m.media-query(md) {
+    // タブレット幅以下では、ナビゲーションを非表示（ボタンで表示させる）
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
+    // 透明
+    opacity: 0;
+
+    // ふわっと透明にするアニメーション
+    // 基本は黒背景を非表示
+    // ハンバーガーボタン押下でふわっと黒背景が表示される
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: v.$color-blue;
+    transition: all 0.5s;
+  }
+}
+
+// ハンバーガーボタンが押下後、黒背景にする
+//  ↑の設定(transition)があるので、0.5sかけて徐々に表れる
+.bl_headerNav.is_fade {
+  @include m.media-query(md) {
+    // 不透明（黒背景）
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// ヘッダーナビゲーション（内側）
+.bl_headerNav_inner {
+  // 横並びレイアウト
+  display: flex;
+
+  // リストスタイル
+  list-style: none;
+
+  @include m.media-query(md) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding-right: 0;
+    margin-bottom: -30px;
+  }
+
+  & > *:last-child {
+    margin-right: 0;
+  }
+
+  & > li {
+    margin-right: 30px;
+
+    @include m.media-query(md) {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+// ナビゲーションリンク（a要素）
+.bl_headerNav_link {
+  // ホバー範囲を広げる
+  display: inline-block;
+  padding: 12px 10px;
+
+  // 文字
+  color: v.$color-blue;
+  font-weight: bold;
+  text-decoration: none;
+
+  // 余白
+  margin-right: 8px;
+}
+
+// ----------------------
+//  ヘッダー右側のお問い合わせボタン類
+// ----------------------
+.bl_actionNav {
+  // 右寄せ
+  margin-right: 0;
+  margin-left: auto;
+
+  // 横並びレイアウト
+  display: flex;
+
+  .el_btn {
+    margin-right: 10px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+// ----------------------
+//  営業時間と電話番号の縦並びブロック
+// ----------------------
+.bl_actionNav_vert {
+  // 縦並びレイアウト
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  // 余白
+  margin-right: 23px;
+
+  & > .el_hours {
+    margin-bottom: 5px;
+  }
+
+  // 上下の並び順を逆にする
+  &.bl_actionNav_vert__rev {
+    flex-direction: column-reverse;
+    color: v.$color-offwhite;
+  }
+}
+
+// 営業時間
+.bl_actionNav_hours {
+  // 文字
+  font-size: 0.75rem;
+  color: v.$color-blue;
+
+  // オフホワイト
+  &.bl_actionNav_hours__offWhite {
+    color: v.$color-offwhite;
+  }
+}
+
+// 電話番号
+.bl_actionNav_tel {
+  // アイコンの基準位置
+  position: relative;
+
+  // 文字
+  color: v.$color-blue;
+  font-weight: bold;
+
+  // アイコン分の余白
+  padding-left: 18px;
+
+  // アイコンを付ける
+  &::before {
+    // 位置
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    // 電話マーク
+    display: inline-block;
+    content: "\f095";
+    font-family: "Font Awesome 6 Free";
+    color: v.$color-blue;
+    transform: translateY(-50%) rotate(15deg) scale(0.8);
+  }
+
+  // オフホワイト
+  &.bl_actionNav_tel__offWhite {
+    color: v.$color-offwhite;
+
+    &::before {
+      color: v.$color-offwhite;
+    }
+  }
+}
+
+// ----------------------
+//  ブログ投稿ページのヘッダー
+// ----------------------
+// ラベル
+.bl_postHeader_label {
+  // 文字を上下中央揃えにする
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  // 文字
+  color: v.$color-white;
+  font-size: 0.75rem;
+
+  // 背景
+  background-color: v.$color-blue;
+
+  // 余白（文字量に合わせて左右に伸縮）
+  padding: 8px 25px;
+  margin-bottom: 30px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// 記事タイトル
+.bl_postHeader_ttl {
+  // 文字
+  color: v.$color-blue;
+  font-size: 1.75rem;
+  font-weight: bold;
+  @include m.line-height-adjustment(1.5);
+
+  // お知らせ記事用
+  &.bl_postHeader_ttl__news {
+    @include m.line-height-adjustment(1.607143);
+
+    // 余白
+    margin-bottom: 43px;
+  }
+}
+
+// 投稿日
+.bl_postHeader_date {
+  display: inline-block;
+
+  // お知らせ記事用
+  &.bl_postHeader_date__news {
+    // 右揃え
+    display: flex;
+    justify-content: flex-end;
+
+    // 余白
+    margin-bottom: 57px;
+  }
+}
+
+// ----------------------
+//  ファーストビュー
+// ----------------------
+.bl_firstView {
+  // 背景画像
+  background: url("img/fv@2x.jpg");
+  background-size: cover;
+
+  // 全幅
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+
+  // 中央揃え
+  text-align: center;
+
+  // 余白
+  padding: 111px 0 83px;
+
+  // 余白
+
+  & > .bl_firstView_ttl {
+    margin-bottom: 18px;
+  }
+
+  & > .bl_firstView_txt {
+    margin-bottom: 50px;
+  }
+
+  & > .el_roundBtn {
+    margin-bottom: 20px;
+
+    // 中央揃え
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// タイトル
+.bl_firstView_ttl {
+  // 文字
+  color: v.$color-white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+// テキスト
+.bl_firstView_txt {
+  // 文字
+  color: v.$color-white;
+  font-size: 1.125rem;
+}
+
+// リンク
+.bl_firstView_link {
+  // 文字
+  color: v.$color-offwhite;
+}
+
+// ----------------------
+//  トップビュー（固定ページ用）
+// ----------------------
+.bl_topView {
+  // 文字の基準位置
+  position: relative;
+
+  // サイズ
+  width: 100vw;
+  height: 220px;
+
+  // 背景画像
+  background-size: cover;
+  background-position: center center;
+}
+
+.bl_topView_ttl {
+  // 文字を上下中央揃えにする
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  // 文字
+  color: v.$color-white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+// ----------------------
+// サムネイル（ブログ用）
+// ----------------------
+// ブログ用サムネイル
+.bl_thumbnail {
+  // サイズ
+  width: 100%;
+  padding-top: 62.711864%;
+
+  // 背景画像
+  background-size: cover;
+  background-position: center center;
+
+  // 余白
+  margin-bottom: 40px;
+}
+
+// ----------------------
+//  セクション
+// ----------------------
+.bl_section_ttl {
+  // 中央揃え
+  text-align: center;
+
+  // 余白
+  margin-bottom: 50px;
+}
+
+.bl_section_body {
+  // 各要素間の余白
+  .bl_textUnit {
+    margin-bottom: 80px;
+  }
+}
+
+// ----------------------
+//  横並びテキスト
+// ----------------------
+.bl_textUnit {
+  // 横並びレイアウト
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 一番右の要素に右マージンは不要
+  & > *:last-child {
+    margin-right: 0;
+  }
+}
+
+.bl_textUnit_txt {
+  // 文字
+  color: v.$color-white;
+  font-size: 1.125rem;
+  font-weight: bold;
+  @include m.line-height-adjustment(2.166667);
+
+  // 余白
+  margin-right: 45px;
+}
+
+// ----------------------
+//  白背景の情報表示エリア
+// ----------------------
+.bl_boxWhite {
+  // 背景色
+  background-color: v.$color-white;
+
+  // 余白（外側の白背景分）
+  padding: 12px 16px;
+}
+
+.bl_boxWhite_inner {
+  // 中央揃え
+  text-align: center;
+
+  // ボーダー
+  border: 5px solid v.$color-blue;
+
+  // 余白
+  padding-top: 21px;
+  padding-bottom: 32px;
+}
+
+.bl_boxWhite_ttl {
+  // ボーダーの基準位置
+  position: relative;
+
+  // 文字
+  color: v.$color-blue;
+  font-size: 2.25rem;
+  font-weight: bold;
+  @include m.line-height-adjustment(1.388889);
+
+  // 余白
+  margin-bottom: 23px;
+
+  // ボーダー
+  &::after {
+    // 位置
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    // ボーダー
+    display: block;
+    content: "";
+    width: 449px;
+    height: 9px;
+    background-color: v.$color-orange;
+  }
+}
+
+.bl_boxWhtie_txt {
+  // 文字
+  color: v.$color-blue;
+  font-size: 1.125rem;
+  @include m.line-height-adjustment(1.611111);
+}
+
+// ----------------------
+//  画像背景の情報表示エリア
+// ----------------------
+.bl_boxImg {
+  // 背景画像
+  background-image: url("img/price@2x.jpg");
+  background-size: cover;
+  background-position: center center;
+
+  // 中央揃え
+  text-align: center;
+
+  // 余白
+  padding-top: 58px;
+  padding-bottom: 53px;
+
+  // 要素間の余白
+  .bl_boxImg_ttl {
+    margin-bottom: 22px;
+  }
+
+  // ボタンを中央揃えにする
+  .el_transparentBtn {
+    margin: 0 auto;
+  }
+}
+
+.bl_boxImg_ttl {
+  // 文字
+  color: v.$color-white;
+  font-size: 1.625rem;
+  font-weight: bold;
+}
+
+// ----------------------
+//  メディア
+// ----------------------
+// メディアの一番下の要素の下マージン
+.bl_mediaUnit > *:last-child {
+  margin-bottom: 120px;
+}
+
+// メディア
+.bl_media {
+  // 横並びレイアウト
+  display: flex;
+  align-items: center;
+
+  // 余白
+  margin-bottom: 55px;
+
+  // テキスト群と画像との余白
+  .bl_media_img {
+    margin-right: 50px;
+  }
+
+  // 左右の並び順を逆にする
+  &.bl_media__rev {
+    flex-direction: row-reverse;
+
+    // テキスト群と画像との余白
+    .bl_media_img {
+      margin-right: 0;
+      margin-left: 50px;
+    }
+  }
+
+  // 小さいサイズ（ブログ記事の関連記事表示用）
+  &.bl_media__small {
+    // 上揃え
+    align-items: flex-start;
+
+    // 余白
+    margin-bottom: 40px;
+
+    // テキスト群と画像との余白
+    .bl_media_img {
+      margin-right: 17px;
+    }
+  }
+
+  // 中くらいサイズ（ブログ記事のおすすめの記事表示用）
+  &.bl_media__medium {
+    // 上揃え
+    align-items: flex-start;
+
+    // 余白
+    margin-bottom: 28px;
+
+    // テキスト群と画像との余白
+    .bl_media_img {
+      margin-right: 32px;
+    }
+  }
+
+  // 記事一覧ページ用
+  &.bl_media__taxonomy {
+    // 上揃え
+    align-items: flex-start;
+    text-decoration: none;
+
+    // 余白
+    margin-bottom: 61px;
+  }
+
+  // トップページ下部のブログ記事用
+  &.bl_media__recentPost {
+    // トップページ下部のブログ記事用日付の基準位置
+    position: relative;
+
+    // 上揃え
+    align-items: flex-start;
+    text-decoration: none;
+
+    // 余白
+    margin-bottom: 28px;
+
+    // テキスト群と画像との余白
+    .bl_media_img {
+      margin-right: 20px;
+    }
+  }
+}
+
+// 画像
+.bl_media_img {
+  // 画像領域に納まるように上下中央揃えで表示
+  width: 350px;
+  height: 240px;
+  background-size: contain;
+  background-position: center center;
+
+  // 小さいサイズ（ブログ記事の関連記事表示用）
+  &.bl_media_img__small {
+    width: 100px;
+    height: 70px;
+    background-size: cover;
+  }
+
+  // 中くらいサイズ（ブログ記事のおすすめの記事表示用）
+  &.bl_media_img__medium {
+    width: 210px;
+    height: 128px;
+    background-size: cover;
+  }
+
+  // 記事一覧ページ用
+  &.bl_media_img__taxonomy {
+    width: 240px;
+    height: 179px;
+    background-size: cover;
+  }
+
+  // トップページ下部のブログ記事用
+  &.bl_media_img__recentPost {
+    width: 150px;
+    height: 110px;
+    background-size: cover;
+  }
+}
+
+// 画像左上にカテゴリー名を付ける
+.bl_media_badge {
+  // バッジの基準位置
+  position: relative;
+
+  &::before {
+    // 位置
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    // スタイル
+    display: inline-block;
+    content: attr(data-name);
+    padding: 3px 9px;
+    color: v.$color-white;
+    font-size: 0.75rem;
+    background-color: v.$color-blue;
+  }
+}
+
+// テキスト群
+.bl_media_body {
+  // サイズ
+  width: 500px;
+
+  // 要素間の余白
+  .el_label {
+    margin-bottom: 35px;
+  }
+
+  .bl_media_ttl {
+    margin-bottom: 35px;
+  }
+
+  // 小さいサイズ（ブログ記事の関連記事表示用）
+  &.bl_media_body__small {
+    width: 152px;
+  }
+
+  // 中くらいサイズ（ブログ記事のおすすめの記事表示用）
+  &.bl_media_body__medium {
+    width: 348px;
+  }
+
+  // 記事一覧ページ用
+  &.bl_media_body_taxonomy {
+    width: 610px;
+  }
+
+  // トップページ下部のブログ記事用
+  &.bl_media_body__recentPost {
+    width: 260px;
+  }
+}
+
+// タイトル
+.bl_media_ttl {
+  // 文字
+  color: v.$color-blue;
+  font-size: 1.625rem;
+  font-weight: bold;
+  @include m.line-height-adjustment(1.5);
+
+  // 記事一覧ページ用
+  &.bl_media_ttl {
+    // リンクということを伝える
+    -webkit-text-decoration: underline v.$color-blue;
+    text-decoration: underline v.$color-blue;
+
+    // 余白
+    margin-bottom: 12px;
+  }
+
+  // 中くらいサイズ（ブログ記事のおすすめの記事表示用）
+  &.bl_media_ttl__medium {
+    font-size: 1.125rem;
+    font-weight: bold;
+    @include m.line-height-adjustment(1.5);
+  }
+
+  // トップページ下部のブログ記事用
+  &.bl_media_ttl__recentPost {
+    font-size: 1rem;
+    font-weight: bold;
+    @include m.line-height-adjustment(1.625);
+  }
+}
+
+// テキスト
+.bl_media_txt {
+  // 文字
+  color: v.$color-blue;
+  @include m.line-height-adjustment(1.625);
+
+  // 小さいサイズ（ブログ記事の関連記事表示用）
+  &.bl_media_txt__small {
+    font-size: 0.75rem;
+    @include m.line-height-adjustment(1.5);
+  }
+
+  // 記事一覧ページ用
+  &.bl_media_txt__taxonomy {
+    font-size: 1rem;
+    @include m.line-height-adjustment(1.5);
+  }
+}
+
+// 投稿日
+.bl_media_date {
+  display: inline-block;
+
+  // 文字
+  color: v.$color-blue;
+  text-decoration: none;
+
+  // 余白
+  margin-bottom: 26px;
+
+  // トップページ下部のブログ記事用
+  &.bl_media_date__recentPost {
+    // 下揃え
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
+
+    // 文字
+    font-size: 0.75rem;
+  }
+}
+
+// ----------------------
+//  カード
+// ----------------------
+// カードのまとまり
+.bl_cardUnit {
+  display: flex;
+  flex-wrap: wrap;
+
+  // カードが複数行に渡ったとき、
+  // その最下部のマージンを相殺（.bl_cardに指定してあるマージン分）
+  &.bl_cardUnit__col3 {
+    margin-bottom: -30px;
+  }
+}
+
+// 3段組みのときのカードの設定
+.bl_cardUnit__col3 > .bl_card {
+  width: 31.111111%;
+  margin-right: 3.333333%;
+
+  // カードが複数行に渡ったときの下マージン
+  margin-bottom: 30px;
+}
+
+// 3n個目（一番右）の要素は右マージンなし
+.bl_cardUnit__col3 > .bl_card:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+// カード
+.bl_card {
+  // 要素間の余白
+  .bl_card_topTxt {
+    margin-bottom: 8px;
+  }
+
+  .bl_card_imgWrapper {
+    margin-bottom: 16px;
+  }
+}
+
+// トップテキスト
+.bl_card_topTxt {
+  // 文字
+  color: v.$color-white;
+  font-weight: bold;
+  @include m.line-height-adjustment(1.8125rem);
+}
+
+// 画像
+.bl_card_imgWrapper {
+  // 画像の基準点
+  position: relative;
+
+  // absolute指定を使用するため、
+  // heightが使えないので、paddingで確保
+  // 縦横比を計算
+  padding-top: 61.071428%;
+
+  // 背景色
+  background-color: v.$color-white;
+
+  img {
+    // 位置
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    // サイズ
+    width: 135px;
+    height: auto;
+  }
+}
+
+// 肩書等
+.bl_card_body {
+  // 横並びレイアウト
+  display: flex;
+  flex-wrap: wrap;
+
+  // 各要素の幅
+  .bl_card_title {
+    // 余白はある程度確保したいので固定値
+    width: 35.714286%;
+    margin-right: 8px;
+  }
+
+  .bl_card_name {
+    width: calc(100% - 35.714286% - 8px);
+  }
+
+  .bl_card_result {
+    width: 100%;
+  }
+}
+
+.bl_card_title,
+.bl_card_name,
+.bl_card_result {
+  display: inline-block;
+
+  // 文字
+  color: v.$color-blue;
+
+  // 背景色
+  background-color: v.$color-offwhite;
+
+  // 余白
+  padding: 6px 0 5px 14px;
+  margin-bottom: 10px;
+}
+
+// 一番下の要素は下マージンなし
+.bl_card_result {
+  margin-bottom: 0;
+}
+
+// ----------------------
+//  流れを示すリスト
+// ----------------------
+.bl_flowList {
+  // カウンター初期化
+  counter-reset: bl_flowList_cnt;
+
+  // 一番下の要素は下マージンなし
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// １行分
+.bl_flowList_set {
+  // 横並びレイアウト
+  display: flex;
+  align-items: center;
+
+  // サイズ（高さはボーダーに合わせる＋パディングで調整）
+  box-sizing: content-box;
+  width: 100%;
+  height: 29px;
+
+  // 背景
+  background-color: v.$color-offwhite;
+
+  // 余白
+  padding: 17.5px 0;
+  margin-bottom: 8px;
+}
+
+// タイトル
+.bl_flowList_ttl {
+  // 番号エリアの基準位置
+  position: relative;
+
+  // 文字
+  color: v.$color-blue;
+  font-size: 1.125rem;
+  font-weight: bold;
+
+  // 横幅は割合で算出
+  width: 31.055556%;
+
+  // 右ボーダー
+  border-right: 1px solid #c3c3c3;
+
+  // 番号エリア分の余白+文字の余白
+  padding-left: 86px;
+
+  // 番号エリア
+  &::before {
+    // 位置
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    // スタイル
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: counter(bl_flowList_cnt);
+    width: 64px;
+    height: 64px;
+    background-color: v.$color-orange;
+    color: v.$color-white;
+    font-weight: bold;
+
+    // カウンターインクリメント
+    counter-increment: bl_flowList_cnt;
+  }
+}
+
+// 内容
+.bl_flowList_txt {
+  // 文字
+  color: v.$color-blue;
+
+  // 横幅は割合で算出
+  width: 68.944444%;
+
+  // 余白
+  padding-left: 53.5px;
+}
+
+// ----------------------
+//  アコーディオン
+// ----------------------
+.bl_accordion {
+  // サイズ
+  width: 100%;
+
+  // ボーダー
+  border-bottom: 1px solid v.$color-blue;
+}
+
+.bl_accordion_btn {
+  // ボタン装飾の基準位置
+  position: relative;
+
+  // 文字
+  color: v.$color-blue;
+  @include m.line-height-adjustment(1.625);
+
+  text-align: left;
+
+  // サイズ
+  width: 100%;
+
+  // 上ボーダー
+  border-top: 1px solid v.$color-blue;
+
+  // 余白
+  padding-top: 28.5px;
+  padding-bottom: 22.5px;
+
+  // ホバー
+  &:hover {
+    background-color: v.$color-offwhite;
+  }
+
+  // is_activeの場合（情報を表示するとき）のスタイル
+  &.is_active {
+    // 余白
+    padding-bottom: 16px;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  // 右側のボタン分
+  padding-right: 78px;
+
+  // 横のバー（ボタン装飾）
+  &::before {
+    // 位置
+    position: absolute;
+    top: 34.5px;
+    right: 20px;
+
+    // スタイル
+    display: block;
+    content: "";
+    width: 25px;
+    height: 3px;
+    background-color: v.$color-blue;
+  }
+
+  // 縦のバー（ボタン装飾）
+  &::after {
+    // 位置
+    position: absolute;
+    top: 20.5px;
+    right: 31px;
+
+    // スタイル
+    display: block;
+    content: "";
+    width: 3px;
+    height: 25px;
+    background-color: v.$color-blue;
+  }
+}
+
+.bl_accordion_txt {
+  // 背景色
+  background-color: v.$color-offwhite;
+
+  // 文字
+  color: v.$color-blue;
+  @include m.line-height-adjustment(1.625rem);
+
+  // 余白
+  padding: 22px 28px 22px 26px;
+  margin-bottom: 15.5px;
+
+  // 非表示
+  display: none;
+
+  // is_activeの場合（情報を表示するとき）は表示
+  &.is_active {
+    display: block;
+  }
+}
+
+// ----------------------
+//  CTAエリア
+// ----------------------
+.bl_cta {
+  // 背景画像
+  background: url("img/cta@2x.jpg");
+  background-size: cover;
+
+  // 全幅
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+
+  // 中央揃え
+  text-align: center;
+
+  // 余白
+  padding: 70px 0 38px;
+
+  // ボタン
+  .el_roundBtn {
+    // 余白
+    margin: 0 auto 20px;
+  }
+}
+
+// メッセージ
+.bl_cta_msg {
+  // 文字
+  color: v.$color-offwhite;
+  font-size: 2rem;
+  font-weight: bold;
+
+  // 余白
+  margin-bottom: 15px;
+}
+
+// リンク
+.bl_cta_link {
+  // 文字
+  color: v.$color-offwhite;
+}
+
+// ----------------------
+//  CTAエリア（電話）
+// ----------------------
+.bl_ctaTel {
+  // 中央揃え
+  text-align: center;
+
+  // 余白
+  margin: 16.5px 0;
+}
+
+.bl_ctaTel_msg {
+  // 位置
+  position: relative;
+  bottom: 6px;
+
+  // 文字
+  color: v.$color-blue;
+  font-weight: bold;
+
+  // 余白
+  margin-right: 20px;
+}
+
+.bl_ctaTel_tel {
+  // 文字
+  color: v.$color-blue;
+  font-size: 2.25rem;
+  font-weight: bold;
+
+  // 余白
+  margin-right: 20px;
+}
+
+.bl_ctaTel_hours {
+  // 位置
+  position: relative;
+  bottom: 6px;
+
+  // 文字
+  color: v.$color-blue;
+}
+
+// ----------------------
+//  パンくずリスト
+// ----------------------
+.bl_breadcrumb {
+  // 背景色
+  background-color: v.$color-offwhite;
+}
+
+.bl_breadcrumb_txt {
+  // 文字を表示したい領域
+  max-width: v.$max-width;
+  height: 50px;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  // 改行しない
+  white-space: nowrap;
+
+  // 文字は上下中央揃えにする
+  display: flex;
+  align-items: center;
+
+  span > a {
+    color: v.$color-blue;
+    -webkit-text-decoration: underline v.$color-blue;
+    text-decoration: underline v.$color-blue;
+  }
+}
+
+// ----------------------
+//  お問い合わせフォーム
+// ----------------------
+// 最初のメッセージ
+.bl_contactForm_msg {
+  // 文字
+  @include m.line-height-adjustment(1.625);
+
+  // 余白
+  margin-bottom: 47px;
+}
+
+// 項目名
+.bl_contactForm_ttl {
+  display: inline-block;
+
+  // 余白
+  margin-bottom: 9px;
+}
+
+// エラー内容
+.bl_contactForm_set .error {
+  display: inline-block;
+
+  // 余白
+  margin-left: 15px;
+}
+
+// 項目名と入力エリアのペア
+.mw_wp_form {
+  // テキスト
+  input[type="text"] {
+    // サイズ
+    width: 100%;
+    height: 50px;
+
+    // 文字
+    color: v.$color-blue;
+    font-size: 0.75rem;
+
+    // ボーダー
+    border: 0.5px solid v.$color-blue;
+
+    // 余白
+    padding: 17px 20px;
+    margin-bottom: 18px;
+  }
+
+  // テキストエリア
+  textarea {
+    // サイズ
+    width: 100%;
+    height: 240px;
+
+    // 文字
+    color: v.$color-blue;
+    font-size: 0.75rem;
+
+    // ボーダー
+    border: 0.5px solid v.$color-blue;
+
+    // 下にできる余白を消すため
+    display: block;
+
+    // 余白
+    padding: 21px 23px;
+    margin-bottom: 28px;
+  }
+}
+
+// 確認ボタン・戻るボタン・送信ボタン
+.bl_contactForm_btn {
+  // 左右中央揃え
+  display: flex;
+  justify-content: center;
+
+  button {
+    margin-right: 30px;
+  }
+
+  // 一番右のボタンは右マージンなし
+  :last-child {
+    margin-right: 0;
+  }
+}
+
+// ラジオボタン
+.bl_radio {
+  // 余白
+  margin-bottom: 22px;
+
+  .mwform-radio-field {
+    // 余白
+    margin-bottom: 13px;
+  }
+
+  label {
+    // 横並びレイアウト
+    display: flex;
+    align-items: center;
+  }
+
+  // ラジオボタン
+  input[type="radio"] {
+    // サイズ
+    width: 20px;
+    height: 20px;
+
+    // 余白
+    margin-right: 19px;
+  }
+}
+
+// チェックボックス
+.mwform-checkbox-field {
+  display: inline-block;
+
+  label {
+    // 横並びレイアウト
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input[type="checkbox"] {
+    // サイズ
+    width: 20px;
+    height: 20px;
+
+    // 余白
+    margin-right: 15px;
+  }
+}
+
+.bl_checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 余白
+  margin-bottom: 45px;
+
+  // エラー内容
+  .error {
+    display: inline-block;
+
+    // 余白
+    margin-left: 15px;
+  }
+}
+
+// プライバシーポリシー
+.bl_privacyPolicy {
+  text-align: center;
+}
+
+.bl_privacyPolicy_msg {
+  // 文字
+  color: v.$color-blue;
+
+  // 余白
+  margin-bottom: 28px;
+}
+
+// 確認画面用
+.mw_wp_form_confirm {
+  // 項目名と入力内容のペア
+  .bl_contactForm_set {
+    display: flex;
+    align-items: flex-start;
+
+    // 余白
+    margin-bottom: 15px;
+  }
+
+  // 項目名
+  .bl_contactForm_ttl {
+    // サイズ
+    width: 180px;
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  // 入力内容
+  .bl_contactForm_data {
+    display: inline-block;
+
+    // サイズ
+    width: calc(100% - 180px);
+
+    // 自動改行
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    // 余白
+    padding-left: 50px;
+  }
+
+  // プライバシーポリシー関連は非表示
+  .bl_privacyPolicy {
+    display: none;
+  }
+}
 
 // ----------------------
 //  フッター
 // ----------------------
-.el_copyRight {
+.bl_footerUtils {
+  // 横並びレイアウト
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
   // 余白
-  margin: 0;
+  padding: 35px 0 65px;
+}
+
+// フッターナビゲーション（内側）
+.bl_footerNav_inner {
+  // 横並びレイアウト
+  display: flex;
+
+  // リストスタイル
+  list-style: none;
+
+  & > *:last-child {
+    margin-right: 0;
+  }
+
+  & > li {
+    margin-right: 30px;
+  }
+}
+
+.bl_footerNav_link {
+  // 基準位置を設定
+  position: relative;
+
+  // ホバー範囲を広げる
+  display: inline-block;
+  padding: 12px 10px;
+
+  // 文字
+  color: v.$color-offwhite;
+  font-weight: bold;
+  text-decoration: none;
+
+  // 余白
+  margin-right: 23px;
+
+  // 縦ボーダー
+  &::after {
+    // 位置
+    position: absolute;
+    top: 50%;
+    right: -11.5px;
+    transform: translateY(-50%);
+
+    // ボーダー
+    display: inline-block;
+    content: "";
+    width: 1px;
+    height: 23px;
+    background-color: v.$color-white;
+  }
+}
+
+// 一番右の要素に縦ボーダーは不要
+.bl_footerNav_inner li > *:last-child::after {
+  content: "";
+  height: 0;
+  width: 0;
+}
+
+// フッターの右側（縦並びレイアウト）
+.bl_footerUtils_right {
+  // 縦並びレイアウト
+  display: flex;
+  flex-direction: column;
+
+  // サイトタイトル
+  .el_siteTtl {
+    // 背景色
+    background-color: v.$color-white;
+
+    // 余白
+    padding: 14px 19px;
+    margin-bottom: 25px;
+  }
+
+  // 電話番号＋営業時間
+  .bl_actionNav_vert {
+    // 余白
+    margin-right: 0;
+  }
+}
+
+// ----------------------
+//  料金図
+// ----------------------
+.bl_priceChart {
+  // 横並びレイアウト
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 余白
+  margin-bottom: 45.8px;
+}
+
+// ブロック
+.bl_priceChart_block {
+  // 文字を上下左右中央揃えにする
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 文字
+  color: v.$color-white;
+  font-size: 1.375rem;
+  font-weight: bold;
+
+  // 背景
+  background-color: v.$color-blue;
+
+  // サイズ
+  width: 280px;
+  height: 90px;
+}
+
+// プラスアイコン
+.bl_priceChart_plus {
+  // バーの基準位置
+  position: relative;
+
+  // サイズ
+  width: 19px;
+  height: 19px;
+
+  // 余白
+  margin: 0 35.5px;
+
+  // 横バー
+  &::before {
+    // 位置
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    // スタイル
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: v.$color-blue;
+  }
+
+  &::after {
+    // 位置
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    // スタイル
+    display: block;
+    content: "";
+    width: 2px;
+    height: 100%;
+    background-color: v.$color-blue;
+  }
+}
+
+// ----------------------
+//  料金表
+// ----------------------
+.bl_priceTable {
+  // 横並びレイアウト
+  display: flex;
+  align-items: flex-end;
+}
+
+// プランひとつ分のまとまり
+.bl_priceTable_set {
+  position: relative;
+
+  // ボーダー
+  border: 0.5px solid v.$color-blue;
+
+  // サイズ
+  width: 220px;
+  height: auto;
+
+  // 余白
+  margin-right: 7px;
+}
+
+// 一番右の要素は右マージンなし
+.bl_priceTable > *:last-child {
+  margin-right: 0;
+}
+
+.bl_priceTable_ttl {
+  // 文字を上下左右中央揃えにする
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 文字
+  color: v.$color-white;
+  font-weight: bold;
+
+  // 背景
+  background-color: v.$color-blue;
+
+  // サイズ
+  height: 60px;
+
+  // おすすめ用
+  &.bl_priceTable_ttl_recommendation {
+    // おすすめ表示の基準位置
+    position: relative;
+
+    // 36px分上に広げる
+    margin-top: 36px;
+
+    // 背景
+    background-color: v.$color-orange;
+
+    // 背景色のエリアを拡大
+    &::before {
+      // 位置
+      position: absolute;
+      top: -36px;
+
+      // スタイル
+      // 少し余裕を持たせて背景色を重ねる
+      display: block;
+      content: "";
+      width: 100%;
+      height: 40px;
+      background-color: v.$color-orange;
+    }
+
+    // おすすめを表示する位置を設定
+    &::after {
+      // 位置
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      // スタイル
+      display: block;
+      content: "おすすめ";
+      color: v.$color-white;
+    }
+  }
+}
+
+// 本体
+.bl_priceTable_body {
+  height: 414px;
+}
+
+// 価格
+.bl_priceTable_price {
+  // 左右中央揃え
+  text-align: center;
+
+  // 余白
+  padding: 30px 20px;
+}
+
+// 価格（値）
+.bl_priceTable_value {
+  // 文字
+  color: v.$color-blue;
+  font-size: 1.5625rem;
+  font-weight: bold;
+
+  // 余白
+  margin-bottom: 7px;
+
+  // オレンジ
+  &.bl_priceTable_value__recommendation {
+    color: v.$color-orange;
+  }
+}
+
+// リスト
+.bl_priceTable_list {
+  // チェックマークを解除
+  list-style: none;
+
+  // 余白
+  padding: 15px 22px;
+
+  li {
+    // 基準位置
+    position: relative;
+
+    // 文字
+    color: v.$color-blue;
+    @include m.line-height-adjustment(1.625);
+
+    // チェックマーク分の余白
+    padding-left: 24.5px;
+
+    // 余白
+    margin-bottom: 18px;
+
+    // チェックマークを設定
+    &::before {
+      // 位置
+      position: absolute;
+      left: 0;
+      top: 5px;
+
+      // 電話マーク
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: bold;
+      color: v.$color-blue;
+    }
+  }
+}
+
+// 横並びレイアウト
+.bl_horizAlign {
+  display: flex;
+  align-items: center;
+
+  // 両端に離れて配置
+  &.bl_horizAlign__spaceBetween {
+    justify-content: space-between;
+  }
+}
+
+// ----------------------
+//  サイドエリア（投稿ページ）
+// ----------------------
+// タイトル
+.bl_postSide_ttl {
+  // 文字
+  color: v.$color-white;
+  font-size: 1.3125rem;
+  font-weight: bold;
+  text-align: center;
+
+  // サイズ
+  width: 100%;
+
+  // 背景
+  background-color: v.$color-blue;
+
+  // 余白
+  padding: 18px 0;
+  margin-bottom: 30px;
+}
+
+// 本体
+.bl_postSide_body {
+  margin-bottom: 50px;
+}
+
+// ----------------------
+//  ボトムエリア（投稿ページ）
+// ----------------------
+.bl_postBottom_ttl {
+  // 文字
+  color: v.$color-blue;
+  font-size: 1.625rem;
+  font-weight: bold;
+
+  // 余白
+  margin-bottom: 28px;
+}
+
+// ----------------------
+//  シンプルな横型リスト
+// ----------------------
+.bl_horizList {
+  // リストスタイルを消去
+  list-style: none;
+
+  // シンプルなリストスタイル
+  &.bl_horizList__simple li {
+    // 文字
+    font-weight: bold;
+
+    // 余白
+    margin-bottom: 11px;
+
+    &::before {
+      content: "・";
+      color: v.$color-blue;
+    }
+  }
+}
+
+// ----------------------
+//  ページネーション
+// ----------------------
+.bl_pagenationNav ul {
+  // 横並びレイアウト
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // リストスタイルを消去
+  list-style: none;
+
+  // ボックス
+  li > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // 文字
+    color: v.$color-blue;
+    font-weight: bold;
+    text-decoration: none;
+
+    // サイズ
+    width: 50px;
+    height: 50px;
+
+    // ボーダー
+    border: 1px solid currentcolor;
+
+    // 余白
+    margin-right: 19px;
+  }
+
+  // 現在表示中のページ番号
+  .current {
+    // 背景色
+    background-color: v.$color-blue;
+
+    // 文字
+    color: v.$color-white;
+
+    // ボーダー
+    border: 1px solid v.$color-blue;
+  }
+
+  // 三点リーダー
+  .dots {
+    border: none;
+  }
+}
+
+// ----------------------
+//  お知らせ一覧用リスト
+// ----------------------
+// １行分
+.bl_newsList_set {
+  // リストスタイルを消去
+  list-style: none;
+
+  // ボーダー
+  border-bottom: 1px solid v.$color-gray;
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    // 余白
+    padding: 21.5px 0;
+  }
+
+  // トップページ用縦型リスト
+  &.bl_newsList_set__vert {
+    border: none;
+
+    // サイズ
+    height: 88px;
+
+    // 余白
+    margin-bottom: 16px;
+
+    a {
+      flex-direction: column;
+      align-items: flex-start;
+
+      // 余白
+      padding: 0;
+    }
+  }
+}
+
+// 一番上のボーダー
+.bl_newsList > *:first-child {
+  // ボーダー
+  border-top: 1px solid v.$color-gray;
+}
+
+// トップページ用縦型リスト
+.bl_newsList.bl_newsList__vert > *:first-child {
+  border: none;
+}
+
+// 投稿日
+.bl_newsList_date {
+  // 文字
+  color: v.$color-blue;
+
+  // サイズ
+  width: 138px;
+
+  // トップページ用縦型リスト
+  &.bl_newsList_date__vert {
+    font-size: 0.75rem;
+    margin-bottom: 13px;
+  }
+}
+
+// タイトル
+.bl_newsList_ttl {
+  // 文字
+  color: v.$color-blue;
+  font-size: 1rem;
+
+  // リンクであることを知らせる
+  -webkit-text-decoration: underline v.$color-blue;
+  text-decoration: underline v.$color-blue;
+}
+
+// ----------------------
+//  サイトタイトル（画像）
+// ----------------------
+.el_siteTtl {
+  // 最前面に表示
+  z-index: 101;
+
+  &img {
+    width: 136px;
+    height: auto;
+  }
+}
+
+// ----------------------
+//  ボタン
+// ----------------------
+.el_btn {
+  // 文字を上下中央揃えにする
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   // 文字
   font-size: 0.875rem;
   font-weight: bold;
-  @include m.letter-spacing-adjustment(0.05em);
+  color: v.$color-white;
+  text-decoration: none;
+
+  // ボタン形状
+  width: 142px;
+  height: 50px;
+  background-color: v.$color-orange;
+  border-radius: 5px;
+
+  // 青色ボタン
+  &.el_btn__blue {
+    background-color: v.$color-blue;
+  }
+
+  // 横幅200px
+  &.el_btn__width200 {
+    width: 200px;
+  }
+}
+
+// 両端が半円のボタン
+.el_roundBtn {
+  // 文字を上下中央揃えにする
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 文字
+  font-size: 1rem;
+  font-weight: bold;
+  color: v.$color-white;
+  text-decoration: none;
+
+  // ボタン形状
+  width: 280px;
+  height: 50px;
+  background-color: v.$color-orange;
+  border-radius: 100vh;
+
+  // サイズ違い
+  &.el_roundBtn__w260h60 {
+    width: 260px;
+    height: 60px;
+  }
+}
+
+// 透過ボタン
+.el_transparentBtn {
+  // 文字を上下中央揃えにする
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 文字
+  color: v.$color-white;
+  font-weight: bold;
+  text-decoration: none;
+
+  // ボタン形状
+  width: 200px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 100vh;
+  border: 1px solid v.$color-white;
+}
+
+// ホームへ戻るボタン
+.el_backToHomeBtn {
+  // 文字
+  color: v.$color-blue;
+
+  // クリック可能範囲を広げる
+  padding: 15px;
+}
+
+// ----------------------
+//  h3タイトル（セクションタイトル）
+// ----------------------
+.el_lv3Heading {
+  // 文字
+  color: v.$color-blue;
+  font-size: 2.25rem;
+  font-weight: bold;
+
+  // 青色
+  &.el_lv3Heading__white {
+    color: v.$color-white;
+  }
+}
+
+// ----------------------
+//  分類リストタイトル
+// ----------------------
+.el_taxonomyList_ttl {
+  // 文字
+  color: v.$color-blue;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+// ----------------------
+//  ラベル
+// ----------------------
+.el_label {
+  // 文字を上下中央揃えにする
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 文字
+  color: v.$color-white;
+  font-size: 0.75rem;
+
+  // サイズ
+  width: 90px;
+  height: 30px;
+
+  // 背景
+  background-color: v.$color-orange;
+}
+
+// ----------------------
+//  コピーライト
+// ----------------------
+.el_copyRight {
+  // 右寄せ
+  display: flex;
+  justify-content: flex-end;
+
+  // 文字
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  // 余白
+  padding: 10px 0;
+}
+
+// ----------------------
+//  ヘルパー
+// ----------------------
+.hp_fontweightBold {
+  font-weight: bold !important;
+}
+
+.hp_colorOrange {
+  color: v.$color-orange !important;
+}
+
+.hp_colorWhite {
+  color: v.$color-white !important;
+}
+
+.hp_textdecolationNone {
+  text-decoration: none !important;
+}
+
+.hp_liststyleNone {
+  padding-left: 0 !important;
+
+  &::before {
+    display: none !important;
+  }
+}
+
+// ラッパー
+.hp_wrapper {
+  overflow-x: hidden;
+}
+
+// ----------------------
+//  ヘルパー（PC幅用）
+// ----------------------
+.lg_mb16 {
+  margin-bottom: 16px !important;
+}
+
+.lg_mb22 {
+  margin-bottom: 22px !important;
+}
+
+.ly_mb30 {
+  margin-bottom: 30px !important;
+}
+
+.lg_mb45 {
+  margin-bottom: 45px !important;
+}
+
+.lg_mb106 {
+  margin-bottom: 106px;
 }

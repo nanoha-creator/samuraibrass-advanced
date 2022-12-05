@@ -66,12 +66,13 @@
 
 // ----------
 //  メディアクエリを定義する
+//  PC幅が基準
 // ----------
 // $breakpoint: ブレイクポイント※variableファイルで定義
 //             （sm: スマホ幅, md: タブレット幅, lg: PC幅）
 // ----------
-@mixin media-query-min($breakpoint: sm) {
-  @media screen and (min-width: map-get(v.$breakpoints, $breakpoint)) {
+@mixin media-query($breakpoint: sm) {
+  @media screen and (max-width: map-get(v.$breakpoints, $breakpoint)) {
     @content;
   }
 }

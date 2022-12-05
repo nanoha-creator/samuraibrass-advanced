@@ -10,5 +10,13 @@ module.exports = {
     "number-max-precision": null, // 数値の桁数を制限しない
     "scss/no-global-function-names": null,
     "declaration-block-no-redundant-longhand-properties": null, // ショートハンドで記述しない制限をしない
+
+    "font-family-no-missing-generic-family-keyword": [
+      true,
+      {
+        // FontAwesomeの指定で発生するエラーを出さない
+        ignoreFontFamilies: "FontAwesome",
+      },
+    ],
   },
 };
