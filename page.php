@@ -30,20 +30,24 @@
     <!-- /.bl_topView -->
 
     <!-- パンくずリスト -->
+    <!-- /.ly_cont -->
     <?php get_template_part('includes/breadcrumb') ?>
 
     <div class="ly_cont">
-      <section class="ly_cont_inner">
+      <div class="ly_cont_inner">
 
-        <?php the_content(); ?>
-
-      </section>
+        <section class="ly_section lg_pt0">
+          <?php the_content(); ?>
+        </section>
+      </div>
     </div>
     <!-- /.ly_cont -->
 
   </main>
 
   <footer>
+    <!-- CTAエリア -->
+    <?php get_template_part('includes/cta') ?>
     <!-- フッター共通パーツ -->
     <?php get_template_part('includes/footer') ?>
   </footer>

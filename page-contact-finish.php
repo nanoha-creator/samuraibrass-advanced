@@ -24,9 +24,9 @@
 
         <div class="ly_cont">
             <div class="ly_cont_inner">
-
-                <?php the_content(); ?>
-
+                <section class="ly_section">
+                    <?php the_content(); ?>
+                </section>
             </div>
             <!-- /.ly_cont_inner -->
         </div>

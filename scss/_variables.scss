@@ -22,10 +22,9 @@ $max-width: 930px;
 
 // ブレークポイント（PC基準）
 // スマホ幅：～768px
-// タブレット幅：769px～1280px
-// PC幅：1281px～
+// タブレット幅：769px～1024px
+// PC幅：1025px～
 $breakpoints: (
-  sm: 599px,
-  md: 768px,
-  lg: 1280px,
+  sm: 768px,
+  md: 1024px,
 ) !default;

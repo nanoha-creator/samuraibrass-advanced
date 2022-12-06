@@ -19,13 +19,12 @@
     </header>
 
     <main>
-      <!-- ファーストビュー ★後でリンク設定 -->
       <div class="bl_firstView">
         <h2 class="bl_firstView_ttl">TOEFL対策はEngress</h2>
         <p class="bl_firstView_txt">日本人へのTOEFL指導歴豊かな講師陣の<br />
           コーチング型TOEFLスクール</p>
-        <a class="el_roundBtn el_roundBtn__w260h60" href="">資料請求</a>
-        <a class="bl_firstView_link" href="">お問い合わせ</a>
+        <a class="el_roundBtn el_roundBtn__w260h60" href="<?php echo esc_url(home_url('/contact/')) ?>">資料請求</a>
+        <a class="bl_firstView_link" href="<?php echo esc_url(home_url('/contact/')) ?>">お問い合わせ</a>
       </div>
       <!-- /.bl_firstView -->
 
@@ -35,20 +34,20 @@
           <section class="ly_section ly_section__blue">
 
             <div class="bl_section_ttl">
-              <h3 class="el_lv3Heading el_lv3Heading__white">TOEFL学習でこんな悩みありませんか？</h3>
+              <h3 class="el_lv3Heading el_lv3Heading__white">TOEFL学習で<br class="sm_only">こんな悩みありませんか？</h3>
             </div>
             <!-- /.bl_section_ttl -->
             <div class="bl_section_body">
-              <div class="bl_textUnit">
-                <p class="bl_textUnit_txt">勉強の習慣が<br />身についていない</p>
-                <p class="bl_textUnit_txt">勉強しているはず<br />なのに点数が伸びない</p>
-                <p class="bl_textUnit_txt">正しい勉強方法が<br />わからない</p>
-              </div>
+              <ul class="bl_textUnit">
+                <li class="bl_textUnit_txt">勉強の習慣が<br class="sm_onlyNone">身についていない</li>
+                <li class="bl_textUnit_txt">勉強しているはず<br class="sm_onlyNone">なのに点数が伸びない</li>
+                <li class="bl_textUnit_txt">正しい勉強方法が<br class="sm_onlyNone">わからない</p>
+              </ul>
               <!-- /.bl_textUnit -->
               <div class="bl_boxWhite">
                 <div class="bl_boxWhite_inner">
-                  <h4 class="bl_boxWhite_ttl">Engressは<br />TOEFLに特化したスクールです</h4>
-                  <p class="bl_boxWhite_txt">完全オーダーメイドで、１人１人の悩みに合わせた最適な指導で<br />TOEFLの苦手分野を克服します。</p>
+                  <h4 class="bl_boxWhite_ttl">Engressは<br />TOEFLに特化した<br class="sm_only">スクールです</h4>
+                  <p class="bl_boxWhite_txt">完全オーダーメイドで、<br class="sm_only">１人１人の悩みに合わせた最適な指導で<br />TOEFLの苦手分野を克服します。</p>
                 </div>
                 <!-- /.bl_boxWhite_inner -->
               </div>
@@ -106,7 +105,7 @@
 
               <!-- ★後でリンク設定 -->
               <div class="bl_boxImg">
-                <h4 class="bl_boxImg_ttl">Engressの料金プランはこちら</h4>
+                <h4 class="bl_boxImg_ttl">Engressの料金プランは<br class="sm_only">こちら</h4>
                 <a class="el_transparentBtn" href="">料金を見てみる</a>
               </div>
               <!-- /.bl_boxImg -->
@@ -123,6 +122,7 @@
             <div class="bl_section_body">
               <div class="bl_cardUnit bl_cardUnit__col3">
                 <div class="bl_card">
+                  .bl_card_topTxt|c
                   <p class="bl_card_topTxt">TOEFL iBT 100点を突破してコロンビア大学大学院に進学できました！</p>
                   <figure class="bl_card_imgWrapper">
                     <img src="<?php echo esc_url(get_theme_file_uri('/img/model01@2x.jpg')) ?>" alt="" width="125" height="140">
@@ -242,21 +242,21 @@
             <!-- ブログ -->
             <section class="ly_contUnit_section">
               <div class="bl_section_ttl">
-                <h3 class="el_lv3Heading">ブログ</h3>
+                <h3 class="el_lv3Heading el_lv3Heading__small">ブログ</h3>
               </div>
               <!-- /.bl_section_ttl -->
               <div class="bl_section_body">
-                <ul class="bl_horizList lg_mb106">
+                <ul class="bl_horizList">
                   <?php
                   $query = get_recentlyPost();
                   if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
                       $category = get_the_category();  ?>
                       <li>
                         <a class="bl_media bl_media__recentPost" href="<?php echo esc_url(the_permalink()); ?>">
-                          <div class="bl_media_img bl_media_img__recentPost bl_media_badge" style="background-image: url(<?php echo esc_url(get_thumbnail()); ?>)" data-name="<?php echo $category[0]->cat_name ?>"></div>
-                          <div class="bl_media_body bl_media_body__recentPost">
-                            <h4 class="bl_media_ttl bl_media_ttl__recentPost js_textTrim" data-num="45"><?php the_title(); ?></h4>
-                            <time class="bl_media_date bl_media_date__recentPost"><?php the_time('Y-m-d'); ?></time>
+                          <div class="bl_media_img bl_media_badge" style="background-image: url(<?php echo esc_url(get_thumbnail()); ?>)" data-name="<?php echo $category[0]->cat_name ?>"></div>
+                          <div class="bl_media_body">
+                            <h4 class="bl_media_ttl js_textTrim" data-num="30"><?php the_title(); ?></h4>
+                            <time class="bl_media_date"><?php the_time('Y-m-d'); ?></time>
                           </div>
                         </a>
                       </li>
@@ -277,7 +277,7 @@
               </div>
               <!-- /.bl_section_ttl -->
               <div class="bl_section_body">
-                <ul class="bl_newsList bl_newsList__vert lg_mb106">
+                <ul class="bl_newsList bl_newsList__vert">
                   <?php
                   $query = get_recentlyNews();
                   if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
@@ -285,12 +285,12 @@
                       <li class="bl_newsList_set bl_newsList_set__vert">
                         <a href="<?php echo esc_url(the_permalink()); ?>">
                           <time class="bl_newsList_date bl_newsList_date__vert"><?php the_time('Y-m-d'); ?></time>
-                          <h4 class="bl_newsList_ttl js_textTrim" data-num="46"><?php the_title(); ?></h4>
+                          <h4 class="bl_newsList_ttl js_textTrim" data-num="30"><?php the_title(); ?></h4>
                         </a>
                       </li>
                     <?php endwhile;
                   else : ?>
-                    <p>おすすめの記事はありませんでした。</p>
+                    <p>記事はありませんでした。</p>
                   <?php endif;
                   wp_reset_postdata(); ?>
                 </ul>
@@ -303,31 +303,12 @@
     </main>
 
     <footer>
-      <div class="ly_footer">
-        <div class="ly_footer_inner">
-          <!-- CTAエリア ★後でリンク設定 -->
-          <div class="bl_cta">
-            <span class="bl_cta_msg">まずは無料で資料請求から</span>
-            <a class="el_roundBtn" href="">資料請求</a>
-            <a class="bl_cta_link" href="">お問い合わせ</a>
-          </div>
-          <!-- /.bl_actionNav -->
-          <!-- CTAエリア（電話） -->
-          <div class="bl_ctaTel">
-            <span class="bl_ctaTel_msg">お電話でのお問い合わせはこちら</span>
-            <span class="bl_ctaTel_tel">0123-456-7890</span>
-            <span class="bl_ctaTel_hours">平日 08:00~20:00</span>
-          </div>
-          <!-- /.bl_telNav -->
-        </div>
-        <!-- /.ly_footer_inner -->
-      </div>
-      <!-- /.ly_footer -->
+      <!-- CTAエリア -->
+      <?php get_template_part('includes/cta') ?>
+
       <!-- フッター共通パーツ -->
       <?php get_template_part('includes/footer') ?>
     </footer>
-
-
 
     <!-- フッター -->
     <?php get_footer(); ?>

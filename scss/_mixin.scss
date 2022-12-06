@@ -99,16 +99,47 @@
 }
 
 // ----------
-//  letter-spacingを調節する（XDとwebで仕様が異なるため）
+//  行間を調節する（XDとwebで仕様が異なるため）
+//  line-height-adjustment()でもずれる場合に固定値で調整
+//  行間を減らしたい場合に使用する
+//  行間を増やしたい場合はline-height-inc()を使用する
 // ----------
-//  $letterSpacing: letter-spacingの指定値
+//  $value: 調整値
 // ----------
-@mixin letter-spacing-adjustment($letterSpacing) {
-  letter-spacing: $letterSpacing;
+@mixin line-height-dec($value) {
+  &::before {
+    display: block;
+    content: "";
+    margin-top: $value;
+  }
 
   &::after {
     display: block;
     content: "";
-    margin-right: -$letterSpacing;
+    margin-bottom: $value;
+  }
+}
+
+// ----------
+//  行間を調節する（XDとwebで仕様が異なるため）
+//  line-height-adjustment()でもずれる場合に固定値で調整
+//  行間を増やすしたい場合に使用する
+//  行間を減らしたい場合はline-height-dec()を使用する
+// ----------
+//  $value: 調整値
+// ----------
+@mixin line-height-inc($value) {
+  &::before {
+    display: block;
+    content: "";
+    margin-top: 0;
+    padding-top: $value;
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    margin-bottom: 0;
+    padding-bottom: $value;
   }
 }
