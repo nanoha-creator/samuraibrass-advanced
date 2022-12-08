@@ -205,6 +205,18 @@
   }
 }
 
+.pg_contactFinish {
+  p {
+    @include m.line-height-adjustment(1.625);
+    @include m.line-height-dec(-2.5px);
+  }
+
+  a {
+    -webkit-text-decoration: underline v.$color-blue;
+    text-decoration: underline v.$color-blue;
+  }
+}
+
 // ----------------------
 //  レイアウト
 // ----------------------
@@ -234,10 +246,10 @@
 // お問い合わせページ
 .pg_id_20 .ly_cont_inner {
   // 最大幅700px+左右の余白
-  padding: 0 115px 40px;
+  padding: 58px 115px 40px;
 
   @include m.media-query(sm) {
-    padding: 0 15px 63px;
+    padding: 30px 15px;
   }
 }
 
@@ -255,6 +267,10 @@
 // セクション
 .ly_section {
   padding: 58px 0 60px;
+
+  @include m.media-query(sm) {
+    padding: 30px 0;
+  }
 
   &.ly_section__blue {
     width: 100vw;
@@ -276,18 +292,19 @@
   margin-bottom: -30px;
 
   @include m.media-query(sm) {
+    padding: 30px 0;
     margin: 0;
   }
 }
 
 .ly_contUnit_section {
   .bl_section_ttl {
-    margin-bottom: 30px;
-  }
-
-  .el_lv3Heading {
     font-size: 2rem;
     text-align: left;
+    margin-bottom: 30px;
+    @include m.media-query(sm) {
+      text-align: center;
+    }
   }
 }
 
@@ -304,7 +321,7 @@
       width: 100%;
       margin-right: 0;
       margin-bottom: 0;
-      padding: 58px 0 60px;
+      padding: 30px 0;
     }
   }
 
@@ -458,6 +475,12 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
+    // 画面の高さに合わせて、余白を調整
+    .bl_cta {
+      padding-top: calc(100vh * 0.07);
+      padding-bottom: calc(100vh * 0.03);
+    }
   }
 }
 
@@ -481,7 +504,7 @@
 
   @include m.media-query(md) {
     position: absolute;
-    bottom: 45%;
+    top: 15%;
     left: 50%;
     display: block;
     transform: translateX(-50%);
@@ -519,12 +542,13 @@
     margin-right: 0;
 
     // 余白
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 }
 
 // ----------------------
 //  ヘッダー右側のお問い合わせボタン類
+// （フッターでも使用する）
 // ----------------------
 .bl_actionNav {
   // 右寄せ
@@ -764,6 +788,10 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
 
+  @include m.media-query(sm) {
+    font-size: 1.25rem;
+  }
+
   // お知らせ記事用
   &.bl_postHeader_ttl__news {
     @include m.line-height-adjustment(1.607143);
@@ -885,6 +913,10 @@
   font-size: 2rem;
   font-weight: bold;
   white-space: nowrap;
+
+  @include m.media-query(sm) {
+    font-size: 1.75rem;
+  }
 }
 
 // ----------------------
@@ -919,6 +951,10 @@
   // 各要素間の余白
   .bl_textUnit {
     margin-bottom: 80px;
+
+    @include m.media-query(sm) {
+      margin-bottom: 40px;
+    }
   }
 }
 
@@ -1028,6 +1064,10 @@
   font-size: 1.125rem;
   @include m.line-height-adjustment(1.611111);
   @include m.line-height-dec(-3px);
+
+  @include m.media-query(sm) {
+    font-size: 1rem;
+  }
 }
 
 // ----------------------
@@ -1045,6 +1085,11 @@
   // 余白
   padding-top: 58px;
   padding-bottom: 53px;
+
+  @include m.media-query(sm) {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
 
   // 要素間の余白
   .bl_boxImg_ttl {
@@ -1071,6 +1116,10 @@
 // メディアの一番下の要素の下マージン
 .bl_mediaUnit > *:last-child {
   margin-bottom: 120px;
+
+  @include m.media-query(sm) {
+    margin-bottom: 30px;
+  }
 }
 
 // メディア
@@ -1110,6 +1159,9 @@
     // テキスト群と画像との余白
     .bl_media_img {
       margin-right: 17px;
+      @include m.media-query(sm) {
+        margin-right: 0;
+      }
     }
   }
 
@@ -1302,7 +1354,12 @@
 
   .bl_media_ttl {
     font-size: 0.75rem;
-    @include m.line-height-adjustment(1.5);
+    @include m.line-height-adjustment(2);
+    @include m.line-height-dec(-4px);
+
+    -webkit-text-decoration: underline v.$color-blue;
+    text-decoration: underline v.$color-blue;
+    margin-bottom: 0;
 
     @include m.media-query(sm) {
       font-size: 1.125rem;
@@ -1334,6 +1391,22 @@
     font-size: 1.125rem;
     font-weight: bold;
     @include m.line-height-adjustment(1.5);
+    @include m.line-height-dec(-2px);
+
+    -webkit-text-decoration: underline v.$color-blue;
+    text-decoration: underline v.$color-blue;
+
+    @include m.media-query(sm) {
+      font-size: 1.125rem;
+    }
+  }
+
+  .bl_media_date {
+    margin-bottom: 24px;
+
+    @include m.media-query(sm) {
+      margin-bottom: 14px;
+    }
   }
 }
 
@@ -1367,12 +1440,20 @@
 
     // 余白
     margin-bottom: 12px;
+
+    @include m.media-query(sm) {
+      font-size: 1.125rem;
+    }
   }
 
   .bl_media_txt {
     font-size: 1rem;
     @include m.line-height-adjustment(1.5);
     @include m.line-height-dec(-1.5px);
+
+    @include m.media-query(sm) {
+      font-size: 0.875rem;
+    }
   }
 }
 
@@ -1476,6 +1557,10 @@
   .bl_card_imgWrapper {
     margin-bottom: 16px;
   }
+
+  @include m.media-query(sm) {
+    position: relative;
+  }
 }
 
 // トップテキスト
@@ -1509,6 +1594,11 @@
     // サイズ
     width: 48.214286%;
     height: auto;
+
+    @include m.media-query(sm) {
+      left: 0;
+      transform: translateX(0);
+    }
   }
 }
 
@@ -1518,19 +1608,38 @@
   display: flex;
   flex-wrap: wrap;
 
+  @include m.media-query(sm) {
+    position: absolute;
+    bottom: calc(30vw);
+    right: 0;
+    flex-direction: column;
+    width: 60%;
+  }
+
   // 各要素の幅
   .bl_card_title {
     // 余白はある程度確保したいので固定値
     width: 35.714286%;
     margin-right: 8px;
+
+    @include m.media-query(sm) {
+      width: 100%;
+      margin-right: 0;
+    }
   }
 
   .bl_card_name {
     width: calc(100% - 35.714286% - 8px);
+    @include m.media-query(sm) {
+      width: 100%;
+    }
   }
 
   .bl_card_result {
     width: 100%;
+    @include m.media-query(sm) {
+      width: 100%;
+    }
   }
 }
 
@@ -1549,6 +1658,12 @@
   // 余白
   padding: 5px 0 5px 14px;
   margin-bottom: 10px;
+
+  @include m.media-query(sm) {
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 5px 10px;
+  }
 }
 
 // 一番下の要素は下マージンなし
@@ -1598,8 +1713,8 @@
 
   @include m.media-query(md) {
     height: 55px;
-    width: calc(100% - 112px);
-    padding-left: 112px;
+    width: calc(100% - 90px);
+    padding-left: 90px;
   }
 
   @include m.media-query(sm) {
@@ -1622,7 +1737,7 @@
     align-items: center;
     content: "0" counter(bl_flowList_cnt);
     width: 64px;
-    height: 64px;
+    height: 100%;
     background-color: v.$color-orange;
     color: v.$color-white;
     font-weight: bold;
@@ -1631,16 +1746,13 @@
     counter-increment: bl_flowList_cnt;
 
     @include m.media-query(md) {
-      width: 90px;
-      height: 90px;
-      font-size: 2rem;
+      width: 60px;
+      height: 100%;
     }
 
     @include m.media-query(sm) {
       width: 30px;
-      height: 30px;
-      top: 32.5px;
-      left: 10px;
+      height: 100%;
       font-size: 1rem;
     }
   }
@@ -1859,26 +1971,31 @@
 
   // 余白
   padding: 16.5px 0;
-  margin-left: -57px;
-  margin-right: 57px;
+}
+
+// テキストの集まり
+.bl_ctaTel_body {
+  display: flex;
+  align-items: flex-end;
+  margin-left: calc(50% - 397px);
+
+  // 幅794pxでmargin-leftがマイナスになるので、
+  // ブレイクポイントを張る
+  @media screen and (max-width: 800px) {
+    margin-left: 0;
+    justify-content: center;
+  }
 
   @include m.media-query(sm) {
     // 縦並びレイアウト
-    display: flex;
     flex-direction: column;
 
     // 左右中央揃えにする
-    text-align: center;
+    align-items: center;
   }
 }
 
 .bl_ctaTel_msg {
-  display: inline-block;
-
-  // 位置
-  position: relative;
-  bottom: 0;
-
   // 文字
   color: v.$color-blue;
   font-weight: bold;
@@ -1889,12 +2006,11 @@
 
   @include m.media-query(sm) {
     margin-right: 0;
+    margin-bottom: 12px;
   }
 }
 
 .bl_ctaTel_tel {
-  display: inline-block;
-
   // 文字
   color: v.$color-blue;
   font-size: 2.25rem;
@@ -1906,16 +2022,11 @@
 
   @include m.media-query(sm) {
     margin-right: 0;
+    margin-bottom: 12px;
   }
 }
 
 .bl_ctaTel_hours {
-  display: inline-block;
-
-  // 位置
-  position: relative;
-  bottom: 0;
-
   // 文字
   color: v.$color-blue;
   @include m.line-height-dec(-2.5px);
@@ -1960,206 +2071,249 @@
 // ----------------------
 //  お問い合わせフォーム
 // ----------------------
-// 最初のメッセージ
-.bl_contactForm_msg {
-  // 文字
-  @include m.line-height-adjustment(1.625);
-
-  // 余白
-  margin-bottom: 47px;
-}
-
-// 項目名
-.bl_contactForm_ttl {
-  display: inline-block;
-
-  // 余白
-  margin-bottom: 9px;
-}
-
-// エラー内容
-.bl_contactForm_set .error {
-  display: inline-block;
-
-  // 余白
-  margin-left: 15px;
-}
-
-// 項目名と入力エリアのペア
-.mw_wp_form {
-  // テキスト
-  input[type="text"] {
-    // サイズ
-    width: 100%;
-    height: 50px;
+.pg_id_20 {
+  // 最初のメッセージ
+  .bl_contactForm_msg {
+    display: inline-block;
 
     // 文字
-    color: v.$color-blue;
-    font-size: 0.75rem;
-
-    // ボーダー
-    border: 0.5px solid v.$color-blue;
+    @include m.line-height-adjustment(1.625);
+    @include m.line-height-dec(-2.5px);
 
     // 余白
-    padding: 17px 20px;
-    margin-bottom: 18px;
+    padding-bottom: 0;
+    margin-top: 2px;
+    margin-bottom: 47px;
+
+    @include m.media-query(sm) {
+      font-size: 0.875rem;
+      margin-bottom: 30px;
+    }
   }
 
-  // テキストエリア
-  textarea {
-    // サイズ
-    width: 100%;
-    height: 240px;
+  // 項目名
+  .bl_contactForm_ttl {
+    display: inline-block;
 
-    // 文字
-    color: v.$color-blue;
-    font-size: 0.75rem;
+    // 文字調整
+    // 疑似要素を別で使用するため、直接調整
+    // 余白調整の際に要注意
+    margin-top: -2.5px;
+    margin-bottom: -2.5px;
 
-    // ボーダー
-    border: 0.5px solid v.$color-blue;
+    // 余白（文字調整分を含める）
+    margin-bottom: 6.5px;
 
-    // 下にできる余白を消すため
-    display: block;
-
-    // 余白
-    padding: 21px 23px;
-    margin-bottom: 28px;
+    @include m.media-query(sm) {
+      font-size: 0.875rem;
+    }
   }
-}
-
-// 確認ボタン・戻るボタン・送信ボタン
-.bl_contactForm_btn {
-  // 左右中央揃え
-  display: flex;
-  justify-content: center;
-
-  button {
-    margin-right: 30px;
-  }
-
-  // 一番右のボタンは右マージンなし
-  :last-child {
-    margin-right: 0;
-  }
-}
-
-// ラジオボタン
-.bl_radio {
-  // 余白
-  margin-bottom: 22px;
-
-  .mwform-radio-field {
-    // 余白
-    margin-bottom: 13px;
-  }
-
-  label {
-    // 横並びレイアウト
-    display: flex;
-    align-items: center;
-  }
-
-  // ラジオボタン
-  input[type="radio"] {
-    // サイズ
-    width: 20px;
-    height: 20px;
-
-    // 余白
-    margin-right: 19px;
-  }
-}
-
-// チェックボックス
-.mwform-checkbox-field {
-  display: inline-block;
-
-  label {
-    // 横並びレイアウト
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  input[type="checkbox"] {
-    // サイズ
-    width: 20px;
-    height: 20px;
-
-    // 余白
-    margin-right: 15px;
-  }
-}
-
-.bl_checkbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  // 余白
-  margin-bottom: 45px;
 
   // エラー内容
-  .error {
+  .bl_contactForm_set .error {
     display: inline-block;
 
     // 余白
     margin-left: 15px;
   }
-}
 
-// プライバシーポリシー
-.bl_privacyPolicy {
-  text-align: center;
-}
+  // 項目名と入力エリアのペア
+  .mw_wp_form {
+    // テキスト
+    input[type="text"] {
+      // サイズ
+      width: 100%;
+      height: 48px;
 
-.bl_privacyPolicy_msg {
-  // 文字
-  color: v.$color-blue;
+      // 文字
+      color: v.$color-blue;
+      font-size: 0.75rem;
 
-  // 余白
-  margin-bottom: 28px;
-}
+      // ボーダー
+      border: 0.5px solid v.$color-blue;
 
-// 確認画面用
-.mw_wp_form_confirm {
-  // 項目名と入力内容のペア
-  .bl_contactForm_set {
-    display: flex;
-    align-items: flex-start;
+      // 余白
+      padding: 17px 20px;
+      margin-bottom: 18px;
+    }
 
-    // 余白
-    margin-bottom: 15px;
-  }
+    // テキストエリア
+    textarea {
+      // サイズ
+      width: 100%;
+      height: 240px;
 
-  // 項目名
-  .bl_contactForm_ttl {
-    // サイズ
-    width: 180px;
+      // 文字
+      color: v.$color-blue;
+      font-size: 0.75rem;
 
-    &::after {
-      content: ":";
+      // ボーダー
+      border: 0.5px solid v.$color-blue;
+
+      // 下にできる余白を消すため
+      display: block;
+
+      // 余白
+      padding: 21px 23px;
+      margin-bottom: 28px;
     }
   }
 
-  // 入力内容
-  .bl_contactForm_data {
-    display: inline-block;
+  // 確認ボタン・戻るボタン・送信ボタン
+  .bl_contactForm_btn {
+    // 左右中央揃え
+    display: flex;
+    justify-content: center;
 
-    // サイズ
-    width: calc(100% - 180px);
+    button {
+      margin-right: 30px;
+    }
 
-    // 自動改行
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-
-    // 余白
-    padding-left: 50px;
+    // 一番右のボタンは右マージンなし
+    :last-child {
+      margin-right: 0;
+    }
   }
 
-  // プライバシーポリシー関連は非表示
+  // ラジオボタン
+  .bl_radio {
+    // 余白
+    margin-bottom: 22px;
+
+    .mwform-radio-field {
+      // 余白
+      margin-bottom: 13px;
+    }
+
+    label {
+      // 横並びレイアウト
+      display: flex;
+      align-items: center;
+    }
+
+    // ラジオボタン
+    input[type="radio"] {
+      // サイズ
+      width: 20px;
+      height: 20px;
+
+      // 余白
+      margin-right: 19px;
+    }
+
+    // テキスト
+    span {
+      @include m.line-height-dec(-2.5px);
+
+      @include m.media-query(sm) {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  // チェックボックス
+  .mwform-checkbox-field {
+    display: inline-block;
+
+    label {
+      // 横並びレイアウト
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input[type="checkbox"] {
+      // サイズ
+      width: 20px;
+      height: 20px;
+
+      // 余白
+      margin-right: 15px;
+    }
+
+    span {
+      @include m.media-query(sm) {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  .bl_checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // 余白
+    margin-bottom: 45px;
+
+    // エラー内容
+    .error {
+      display: inline-block;
+
+      // 余白
+      margin-left: 15px;
+    }
+  }
+
+  // プライバシーポリシー
   .bl_privacyPolicy {
-    display: none;
+    text-align: center;
+  }
+
+  .bl_privacyPolicy_msg {
+    // 文字
+    color: v.$color-blue;
+    @include m.line-height-dec(-2.5px);
+
+    // 余白
+    padding-bottom: 0;
+    margin-bottom: 28px;
+
+    @include m.media-query(sm) {
+      font-size: 0.875rem;
+    }
+  }
+
+  // 確認画面用
+  .mw_wp_form_confirm {
+    // 項目名と入力内容のペア
+    .bl_contactForm_set {
+      display: flex;
+      align-items: flex-start;
+
+      // 余白
+      margin-bottom: 15px;
+    }
+
+    // 項目名
+    .bl_contactForm_ttl {
+      // サイズ
+      width: 180px;
+
+      &::after {
+        content: ":";
+      }
+    }
+
+    // 入力内容
+    .bl_contactForm_data {
+      display: inline-block;
+
+      // サイズ
+      width: calc(100% - 180px);
+
+      // 自動改行
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+
+      // 余白
+      padding-left: 50px;
+    }
+
+    // プライバシーポリシー関連は非表示
+    .bl_privacyPolicy {
+      display: none;
+    }
   }
 }
 
@@ -2174,6 +2328,11 @@
 
   // 余白
   padding: 35px 0 65px;
+
+  @include m.media-query(sm) {
+    align-items: flex-end;
+    padding-bottom: 30px;
+  }
 }
 
 // フッターナビゲーション（内側）
@@ -2186,6 +2345,12 @@
 
   & > *:first-child > a {
     padding-left: 0;
+  }
+
+  @include m.media-query(sm) {
+    & > * > a {
+      padding-left: 0;
+    }
   }
 
   // スマホ幅ではナビゲーションを縦並びにする
@@ -2304,6 +2469,9 @@
   color: v.$color-white;
   font-size: 1.375rem;
   font-weight: bold;
+  text-align: center;
+  @include m.line-height-adjustment(1.590909);
+  @include m.line-height-dec(-3px);
 
   // 背景
   background-color: v.$color-blue;
@@ -2311,6 +2479,10 @@
   // サイズ
   width: 280px;
   height: 90px;
+
+  @include m.media-query(sm) {
+    font-size: 1.2rem;
+  }
 }
 
 // プラスアイコン
@@ -2325,6 +2497,10 @@
   // 余白
   margin: 0 35.5px;
 
+  @include m.media-query(sm) {
+    margin: 0 15px;
+  }
+
   // 横バー
   &::before {
     // 位置
@@ -2336,9 +2512,13 @@
     // スタイル
     display: block;
     content: "";
-    width: 100%;
+    width: 25px;
     height: 2px;
     background-color: v.$color-blue;
+
+    @include m.media-query(sm) {
+      width: 15px;
+    }
   }
 
   &::after {
@@ -2352,14 +2532,24 @@
     display: block;
     content: "";
     width: 2px;
-    height: 100%;
+    height: 25px;
     background-color: v.$color-blue;
+
+    @include m.media-query(sm) {
+      height: 15px;
+    }
   }
 }
 
 // ----------------------
 //  料金表
 // ----------------------
+.js_scrollable {
+  @include m.media-query(sm) {
+    overflow-x: scroll;
+  }
+}
+
 .bl_priceTable {
   // 横並びレイアウト
   display: flex;
@@ -2379,6 +2569,10 @@
 
   // 余白
   margin-right: 7px;
+
+  @include m.media-query(sm) {
+    min-width: 200px;
+  }
 }
 
 // 一番右の要素は右マージンなし
@@ -2447,6 +2641,10 @@
 // 本体
 .bl_priceTable_body {
   height: 414px;
+
+  @include m.media-query(sm) {
+    height: 320px;
+  }
 }
 
 // 価格
@@ -2456,6 +2654,10 @@
 
   // 余白
   padding: 30px 20px;
+
+  @include m.media-query(sm) {
+    padding: 15px 10px;
+  }
 }
 
 // 価格（値）
@@ -2513,6 +2715,10 @@
     // 下の要素の分も含めると、12px: 12px-2.5px+2.5px
     margin-bottom: 12px;
 
+    @include m.media-query(sm) {
+      font-size: 0.875rem;
+    }
+
     // チェックマークを設定
     &::before {
       // 位置
@@ -2520,11 +2726,15 @@
       left: 0;
       top: 5px;
 
-      // 電話マーク
+      // チェックマーク
       content: "\f00c";
       font-family: "Font Awesome 6 Free";
       font-weight: bold;
       color: v.$color-blue;
+
+      @include m.media-query(sm) {
+        top: 2px;
+      }
     }
   }
 
@@ -2555,6 +2765,8 @@
   font-size: 1.3125rem;
   font-weight: bold;
   text-align: center;
+  @include m.line-height-adjustment(1.857143);
+  @include m.line-height-dec(-6px);
 
   // サイズ
   width: 100%;
@@ -2618,11 +2830,12 @@
   // シンプルなリストスタイル（ブログ投稿記事カテゴリーリスト用）
   &.bl_horizList__simple {
     li {
-      // 文字
-      font-weight: bold;
+      // 高さ調節
+      margin-top: -2px;
+      margin-bottom: -2px;
 
-      // 余白
-      margin-bottom: 11px;
+      // 余白（高さ調整の分も含める:11px-2px）
+      margin-bottom: 9px;
 
       &::before {
         content: "・";
@@ -2633,6 +2846,7 @@
     a {
       // 文字
       color: v.$color-blue;
+      font-weight: bold;
       text-decoration: none;
     }
   }
@@ -2707,7 +2921,7 @@
     text-decoration: none;
 
     // 余白
-    padding: 21.5px 0;
+    padding: 20.5px 0;
 
     @include m.media-query(sm) {
       flex-wrap: wrap;
@@ -2730,10 +2944,15 @@
 .bl_newsList_date {
   // 文字
   color: v.$color-blue;
-  @include m.line-height-dec(-4px);
+  @include m.line-height-dec(-2px);
 
   // サイズ
   width: 138px;
+
+  @include m.media-query(sm) {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
 }
 
 // タイトル
@@ -2741,7 +2960,7 @@
   // 文字
   color: v.$color-blue;
   font-size: 1rem;
-  @include m.line-height-dec(-2px);
+  @include m.line-height-dec(-2.5px);
 
   // リンクであることを知らせる
   -webkit-text-decoration: underline v.$color-blue;
@@ -2750,7 +2969,7 @@
 
 // トップページ用縦型リスト
 .bl_newsList__vert {
-  .bl_newsList_set___vert {
+  .bl_newsList_set {
     border: none;
 
     // サイズ
@@ -2916,6 +3135,10 @@
   color: v.$color-blue;
   font-size: 2rem;
   font-weight: bold;
+
+  @include m.media-query(sm) {
+    font-size: 1.625rem;
+  }
 }
 
 // ----------------------
@@ -3002,12 +3225,12 @@
   margin-bottom: 22px !important;
 }
 
-.ly_mb30 {
-  margin-bottom: 30px !important;
+.lg_mb28 {
+  margin-bottom: 28px !important;
 }
 
-.lg_mb45 {
-  margin-bottom: 45px !important;
+.ly_mb30 {
+  margin-bottom: 30px !important;
 }
 
 .lg_mb106 {

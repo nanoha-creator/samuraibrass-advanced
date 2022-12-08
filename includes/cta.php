@@ -8,7 +8,10 @@
     <!-- /.bl_cta -->
     <!-- CTAエリア（電話） -->
     <div class="bl_ctaTel">
-        <span class="bl_ctaTel_msg">お電話でのお問い合わせはこちら</span><span class="bl_ctaTel_tel">0123-456-7890</span><span class="bl_ctaTel_hours">平日 08:00~20:00</span>
+        <div class="bl_ctaTel_body">
+            <span class="bl_ctaTel_msg">お電話でのお問い合わせはこちら</span><span class="bl_ctaTel_tel">0123-456-7890</span><span class="bl_ctaTel_hours">平日 08:00~20:00</span>
+        </div>
+        <!-- /.bl_ctaTel_body -->
     </div>
     <!-- /.bl_telNav -->
 </div>

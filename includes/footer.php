@@ -26,9 +26,8 @@
 
             <div class="bl_footerUtils_right">
                 <!-- サイトロゴ -->
-                <a class="el_siteTtl" href="<?php esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('/img/logo.svg')); ?>" alt="Engress" width="136" height="27"></a>
+                <a class="el_siteTtl" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('/img/logo.svg')); ?>" alt="Engress" width="136" height="27"></a>
 
-                <!-- ★後でリンク設定 -->
                 <div class="bl_actionNav_vert bl_actionNav_vert__rev">
                     <span class="bl_actionNav_hours bl_actionNav_hours__offWhite">平日08:00〜20:00</span>
                     <span class="bl_actionNav_tel bl_actionNav_tel__offWhite">0123-456-7890</span>

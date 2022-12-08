@@ -21,10 +21,11 @@ $color-orange: #f5a623;
 $max-width: 930px;
 
 // ブレークポイント（PC基準）
-// スマホ幅：～768px
-// タブレット幅：769px～1024px
+// スマホ幅：～599px
+// タブレット幅：560px～1024px
 // PC幅：1025px～
 $breakpoints: (
-  sm: 768px,
+  sm: 599px,
   md: 1024px,
+  lg: 1280px,
 ) !default;

@@ -19,4 +19,5 @@
   <link rel="apple-touch-icon" href="<?php echo esc_url(get_theme_file_uri('apple-touch-icon.png')) ?>">
   <link rel="apple-touch-icon" type="image/png" href="<?php echo esc_url(get_theme_file_uri('android-chrome-192x192.png')) ?>">
 
+
   <?php wp_head(); ?>
