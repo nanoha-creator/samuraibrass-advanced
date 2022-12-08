@@ -8,7 +8,7 @@ module.exports = {
   },
   /* ESLintが用意している一般的なルールを適用
         コード整形は、Prettierのものを適用 */
-  extends: ["eslint:recommended", "prettier"],
+  extends: ["eslint:recommended", "prettier", "plugin:@wordpress/eslint-plugin/recommended-with-formatting"],
   parserOptions: {
     ecmaVersion: 12,
   },
