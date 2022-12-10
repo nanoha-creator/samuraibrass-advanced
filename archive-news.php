@@ -91,8 +91,6 @@
             <?php get_template_part('includes/footer') ?>
         </footer>
 
-
-
         <!-- フッター -->
         <?php get_footer(); ?>
     </div>

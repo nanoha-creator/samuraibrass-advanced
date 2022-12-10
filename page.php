@@ -66,9 +66,10 @@
       };
     </script>
   </div>
-</body>
 
-<!--フッター-->
-<?php get_footer(); ?> </body>
+  <!--フッター-->
+  <?php get_footer(); ?>
+  </div>
+</body>
 
 </html>

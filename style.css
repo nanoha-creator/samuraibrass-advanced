@@ -381,6 +381,8 @@ img {
   padding-left: calc(50vw - 50%);
   padding-right: calc(50vw - 50%);
   background-color: #1b224c;
+  position: relative;
+  z-index: -100;
 }
 
 .ly_contUnit {
@@ -807,6 +809,8 @@ img {
 
 .bl_postHeader_date {
   display: inline-block;
+  white-space: nowrap;
+  min-width: 90px;
 }
 .bl_postHeader_date.bl_postHeader_date__news {
   display: flex;
@@ -839,6 +843,7 @@ img {
   color: #fff;
   font-size: 3rem;
   font-weight: bold;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 .bl_firstView_ttl::before {
   display: block;
@@ -973,6 +978,8 @@ img {
 }
 
 .bl_boxWhite {
+  position: relative;
+  z-index: -10;
   background-color: #fff;
   padding: 12px 16px;
 }
@@ -985,7 +992,6 @@ img {
 }
 
 .bl_boxWhite_ttl {
-  position: relative;
   color: #1b224c;
   font-size: 2.25rem;
   font-weight: bold;
@@ -1017,21 +1023,29 @@ img {
     font-size: 1.75rem;
   }
 }
-.bl_boxWhite_ttl::after {
+
+.el_underline {
+  position: relative;
+  display: inline-block;
+}
+.el_underline::after {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
+  bottom: 13px;
   content: "";
-  max-width: 450px;
-  width: 50vw;
+  display: block;
+  width: 100%;
   height: 9px;
   background-color: #f5a623;
+  z-index: -1;
 }
 @media screen and (max-width: 599px) {
-  .bl_boxWhite_ttl::after {
-    width: 50vw;
+  .el_underline::after {
+    bottom: 10px;
+  }
+}
+@media screen and (max-width: 599px) {
+  .el_underline.el_underline__smNotOnly::after {
+    display: none;
   }
 }
 
@@ -1721,6 +1735,14 @@ img {
   display: block;
   content: "";
   margin-bottom: -2.5px;
+}
+@media screen and (max-width: 1024px) {
+  .bl_card_title,
+  .bl_card_name,
+  .bl_card_result {
+    font-size: 0.75rem;
+    padding: 5px;
+  }
 }
 @media screen and (max-width: 599px) {
   .bl_card_title,
@@ -2467,13 +2489,9 @@ img {
   position: relative;
   border: 0.5px solid #1b224c;
   width: 220px;
+  min-width: 200px;
   height: auto;
   margin-right: 7px;
-}
-@media screen and (max-width: 599px) {
-  .bl_priceTable_set {
-    min-width: 200px;
-  }
 }
 
 .bl_priceTable > *:last-child {
@@ -2516,7 +2534,7 @@ img {
 .bl_priceTable_body {
   height: 414px;
 }
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 1024px) {
   .bl_priceTable_body {
     height: 320px;
   }
@@ -2526,7 +2544,7 @@ img {
   text-align: center;
   padding: 30px 20px;
 }
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 1024px) {
   .bl_priceTable_price {
     padding: 15px 10px;
   }
@@ -2600,7 +2618,7 @@ img {
   padding-left: 24.5px;
   margin-bottom: 12px;
 }
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 1024px) {
   .bl_priceTable_list li {
     font-size: 0.875rem;
   }
@@ -2614,7 +2632,7 @@ img {
   font-weight: bold;
   color: #1b224c;
 }
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 1024px) {
   .bl_priceTable_list li::before {
     top: 2px;
   }
