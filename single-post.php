@@ -43,7 +43,7 @@
                                 <div class="bl_horizAlign bl_horizAlign__spaceBetween">
                                     <!-- シェアボタン -->
                                     <?php
-                                    wp_social_bookmarking_light_output_e(null, get_permalink(), the_title("", "", false));
+                                    wp_social_bookmarking_light_output_e("facebook_like, facebook_share, twitter");
                                     ?>
                                     <time class=" bl_postHeader_date"><?php the_time('Y-m-d'); ?></time>
                                 </div>

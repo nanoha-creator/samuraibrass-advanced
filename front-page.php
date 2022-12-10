@@ -54,7 +54,7 @@
               <!-- /.bl_textUnit -->
               <div class="bl_boxWhite">
                 <div class="bl_boxWhite_inner">
-                  <h4 class="bl_boxWhite_ttl">Engressは<br />TOEFLに特化した<br class="sm_only">スクールです</h4>
+                  <h4 class="bl_boxWhite_ttl">Engressは<br /><span class="el_underline">TOEFLに特化した</span><br class="sm_only"><span class="el_underline el_underline__smNotOnly">スクール</span>です</h4>
                   <p class="bl_boxWhite_txt">完全オーダーメイドで、<br class="sm_only">１人１人の悩みに合わせた最適な指導で<br />TOEFLの苦手分野を克服します。</p>
                 </div>
                 <!-- /.bl_boxWhite_inner -->
@@ -113,7 +113,7 @@
 
               <div class="bl_boxImg">
                 <h4 class="bl_boxImg_ttl">Engressの料金プランは<br class="sm_only">こちら</h4>
-                <a class="el_transparentBtn" href="<?php echo esc_url(home_url('/contact/')) ?>">料金を見てみる</a>
+                <a class="el_transparentBtn" href="<?php echo esc_url(home_url('/price/')) ?>">料金を見てみる</a>
               </div>
               <!-- /.bl_boxImg -->
             </div>

@@ -45,11 +45,9 @@
             <?php get_template_part('includes/footer') ?>
         </footer>
 
-</body>
-
-<!-- フッター -->
-<?php get_footer(); ?>
-</div>
+        <!-- フッター -->
+        <?php get_footer(); ?>
+    </div>
 </body>
 
 </html>
